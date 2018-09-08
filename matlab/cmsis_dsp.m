@@ -1,6 +1,6 @@
 clf, clc, clear all
 
-Fs=48000; Ts = 1/Fs; L = 320; t = (0:L-1)*Ts; f = Fs*(0:(L/2))/L;
+Fs=48000; Ts = 1/Fs; L =320; t = (0:L-1)*Ts; f = Fs*(0:(L/2))/L;
 Fc = 6000;  orden = 28;
 
 S = sin(2*pi*1000*t) + sin(2*pi*15000*t);

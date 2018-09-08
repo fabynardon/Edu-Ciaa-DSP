@@ -19,10 +19,10 @@ fprintf(fid,'/* ----------------------------------------------------------------
 fprintf(fid,'** Macro Defines\n');
 fprintf(fid,'** ------------------------------------------------------------------- */\n');
 
-fprintf(fid,'#define TEST_LENGTH_SAMPLES %d\n',320);
+fprintf(fid,'#define TEST_LENGTH_SAMPLES %d\n',L);
 fprintf(fid,'#define SNR_THRESHOLD_F32 %5.1ff\n',140);
-fprintf(fid,'#define BLOCK_SIZE %d\n',32);
-fprintf(fid,'#define NUM_TAPS %d\n\n',29);
+fprintf(fid,'#define BLOCK_SIZE %d\n',L/10);
+fprintf(fid,'#define NUM_TAPS %d\n\n',orden+1);
 
 fprintf(fid,'/* ----------------------------------------------------------------------\n');
 fprintf(fid,'** FIR Coefficients buffer generated using fir1() MATLABfunction.\n');
