@@ -1,12 +1,19 @@
 clf, clc, clear all
 
 Fs=48000; Ts = 1/Fs; L =320; t = (0:L-1)*Ts; f = Fs*(0:(L/2))/L;
-Fc = 6000;  orden = 28;
+Fc = 4000;  orden = 88;
 
-S = sin(2*pi*1000*t) + sin(2*pi*15000*t);
+S = sin(2*pi*1000*t)+1;
 %S = square(2*pi*3000*t);
 testInput = S + 0*rand(size(S));
 
+% for i=0:319;
+%     if mod(i,40) == 0
+%         testInput(i+1)=1;
+%     end
+% end
+
+testInput(1)=1;
 figure(1)
 subplot(221)
 plot(1000*t,testInput)

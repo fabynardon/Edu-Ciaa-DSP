@@ -34,7 +34,7 @@ fprintf(fid,'const float32_t firCoeffs32[%d]={\n',size(firCoeffsb,2));
 for i=1:size(firCoeffsb,2)-1;
     
     fprintf(fid,'%+5.12ff,\t',firCoeffsb(i));
-    if mod(i,8) == 0
+    if mod(i,6) == 0
         fprintf(fid,'\n');
     end
 end
@@ -45,7 +45,7 @@ fprintf(fid,'const float32_t testInput[%d]={\n',size(testInput,2));
 for i=1:size(testInput,2)-1;
     
     fprintf(fid,'%+5.12ff,\t',testInput(i));
-    if mod(i,8) == 0
+    if mod(i,6) == 0
         fprintf(fid,'\n');
     end
 end
@@ -56,7 +56,7 @@ fprintf(fid,'const float32_t refOutput[%d]={\n',size(testOutput,2));
 for i=1:size(testOutput,2)-1;
     
     fprintf(fid,'%+5.12ff,\t',testOutput(i));
-    if mod(i,8) == 0
+    if mod(i,6) == 0
         fprintf(fid,'\n');
     end
     
