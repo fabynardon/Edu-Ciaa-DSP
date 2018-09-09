@@ -1,17 +1,9 @@
 clf, clc, clear all
 
-Fs=48000; Ts = 1/Fs; L =320; t = (0:L-1)*Ts; f = Fs*(0:(L/2))/L;
-Fc = 4000;  orden = 88;
+Fs=48000; Ts = 1/Fs; L =320; t = (0:L-1)*Ts; f = (Fs/L)*(0:0.5*L);
+Fc = 4000;  orden = 28;
 
-S = sin(2*pi*1000*t)+1;
-%S = square(2*pi*3000*t);
-testInput = S + 0*rand(size(S));
-
-% for i=0:319;
-%     if mod(i,40) == 0
-%         testInput(i+1)=1;
-%     end
-% end
+testInput = sin(2*pi*1000*t)+0.5*sin(2*pi*15000*t) + 0.8*rand(size(t));
 
 testInput(1)=1;
 figure(1)
