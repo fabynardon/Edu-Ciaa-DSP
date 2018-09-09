@@ -1,9 +1,9 @@
 clf, clc, clear all
 
 Fs=48000; Ts = 1/Fs; L =320; t = (0:L-1)*Ts; f = (Fs/L)*(0:0.5*L);
-Fc = 4000;  orden = 28;
+Fc = 6000;  orden = 28;
 
-testInput = sin(2*pi*1000*t)+0.5*sin(2*pi*15000*t) + 0.8*rand(size(t));
+testInput = sin(2*pi*1000*t)+0.5*sin(2*pi*15000*t) + 0.0*rand(size(t));
 
 testInput(1)=1;
 figure(1)
