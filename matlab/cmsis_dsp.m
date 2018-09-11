@@ -1,9 +1,9 @@
 clf, clc, clear all
 
 Fs=48000; Ts = 1/Fs; L =320; t = (0:L-1)*Ts; f = (Fs/L)*(0:0.5*L);
-Fc = 6000;  orden = 28;
+Fc = 6000;  orden = 29;
 
-testInput = sin(2*pi*1000*t)+0.5*sin(2*pi*15000*t) + 0.0*rand(size(t));
+testInput = 511*sin(2*pi*1000*t)+0.0*512*sin(2*pi*15000*t) + 0.0*rand(size(t)) + 511;
 
 testInput(1)=1;
 figure(1)
@@ -28,22 +28,22 @@ ylabel('|P1(f)|')
 grid on
 
 [firCoeffsb, firCoeffsa] = fir1(orden, 2*Fc/Fs);
-%[firCoeffs, firTime] = impz(firCoeffsb, firCoeffsa);
+[firCoeffs, firTime] = impz(firCoeffsb, firCoeffsa);
 [h,w] = freqz(firCoeffsb,firCoeffsa,length(f));
 
-% figure(2)
-% subplot(121)
-% plot(1000*Ts*firTime, firCoeffs), %xlim(1000*Ts*[firTime(1) firTime(end)])
-% title('Respuesta Impulsiva del filtro (t)')
-% xlabel('t (milliseconds)')
-% grid on
-% subplot(122)
-% plot(0.001*Fs*w/(2*pi),abs(h),'r'), xlim([0 0.001*Fs/2]), grid on
-% title('Single-Sided Amplitude Spectrum of Respuesta Impulsiva(t)')
-% xlabel('f (Khz)')
-% ylabel('|P1(f)|')
+figure(2)
+subplot(121)
+plot(1000*Ts*firTime, firCoeffs), %xlim(1000*Ts*[firTime(1) firTime(end)])
+title('Respuesta Impulsiva del filtro (t)')
+xlabel('t (milliseconds)')
+grid on
+subplot(122)
+plot(0.001*Fs*w/(2*pi),abs(h),'r'), xlim([0 0.001*Fs/2]), grid on
+title('Single-Sided Amplitude Spectrum of Respuesta Impulsiva(t)')
+xlabel('f (Khz)')
+ylabel('|P1(f)|')
 
-testOutput = filter(firCoeffsb,firCoeffsa,testInput);
+testOutput = filter(64*firCoeffsb,firCoeffsa,testInput);
 
 figure(1)
 subplot(222)

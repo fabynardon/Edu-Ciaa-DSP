@@ -29,16 +29,16 @@ fprintf(fid,'** FIR Coefficients buffer generated using fir1() MATLABfunction.\n
 fprintf(fid,'** fir1(28, 6/24)\n');
 fprintf(fid,'** ------------------------------------------------------------------- */\n');
 
-fprintf(fid,'const float32_t firCoeffs32[%d]={\n',size(firCoeffsb,2));
+fprintf(fid,'const q15_t firCoeffs32[%d]={\n',size(firCoeffsb,2));
 
 for i=1:size(firCoeffsb,2)-1;
     
-    fprintf(fid,'%+5.12ff,\t',firCoeffsb(i));
+    fprintf(fid,'FRAC16(%+5.12f),\t',firCoeffsb(i));
     if mod(i,6) == 0
         fprintf(fid,'\n');
     end
 end
-fprintf(fid,'%+5.12ff};\n\n',firCoeffsb(size(firCoeffsb,2)));
+fprintf(fid,'FRAC16(%+5.12f)};\n\n',firCoeffsb(size(firCoeffsb,2)));
 
 fprintf(fid,'const float32_t testInput[%d]={\n',size(testInput,2));
 
