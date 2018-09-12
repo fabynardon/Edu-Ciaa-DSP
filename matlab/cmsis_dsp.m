@@ -1,11 +1,10 @@
 clf, clc, clear all
 
-Fs=48000; Ts = 1/Fs; L =320; t = (0:L-1)*Ts; f = (Fs/L)*(0:0.5*L);
-Fc = 6000;  orden = 29;
+Fs=48000; Ts = 1/Fs; L =512; t = (0:L-1)*Ts; f = (Fs/L)*(0:0.5*L);
+Fc = 6000;  orden = 60;
 
-testInput = 511*sin(2*pi*1000*t)+0.0*512*sin(2*pi*15000*t) + 0.0*rand(size(t)) + 511;
+testInput = 64*(511*square(2*pi*1000*t)+0.0*512*sin(2*pi*15000*t) + 0.0*rand(size(t)) + 511);
 
-testInput(1)=1;
 figure(1)
 subplot(221)
 plot(1000*t,testInput)
@@ -43,7 +42,7 @@ title('Single-Sided Amplitude Spectrum of Respuesta Impulsiva(t)')
 xlabel('f (Khz)')
 ylabel('|P1(f)|')
 
-testOutput = filter(64*firCoeffsb,firCoeffsa,testInput);
+testOutput = filter(firCoeffsb,firCoeffsa,testInput);
 
 figure(1)
 subplot(222)
@@ -66,4 +65,4 @@ ylabel('|P1(f)|')
 grid on
 set(ax(2),'Ylim',[0 1])
 
-external_generation
+external_generation_q31
